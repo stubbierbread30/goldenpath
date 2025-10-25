@@ -1,0 +1,254 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoldenPath</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'home/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+
+</head>
+<body>
+
+      <nav class="navbar">
+        <div class="nav-left">
+            <a href="#">
+                <button class="login-btn">Login</button>
+            </a>
+        </div>
+        <div class="nav-center">
+            <span class="logo">GoldenPath<span class="dot">.</span></span>
+        </div>
+        <div class="nav-right">
+            <a href="#" class="active">Home</a>
+            <a href="#">Features</a>
+            <a href="#">Explore</a>
+            <a href="#">Directory</a>
+            <a href="#">Help & FAQs</a>
+
+            <i class="fas fa-search fa-lg search-icon" onclick="toggleSearchInput()"></i>
+
+        <div class="search-input-container" style="display: none;">
+            <input type="text" id="navSearch" placeholder="Search..." onkeydown="handleNavSearch(event)" />
+        </div>
+        </div>
+    </nav>
+
+<header class="hero">
+        <h1>No More Getting Lost,<br>Find Your Way Instantly!</h1>
+        <p>The ultimate campus navigation app for easy, real-time directions.</p>
+        <div class="hero-buttons">
+            <button class="get-started">Get Started</button>
+            <button class="request-demo">Go to Virtual Tour</button>
+        </div>
+    </header>
+
+    <section class="second">
+        <header class="hero-secondary">
+            <h2><strong>More than just a map.</strong> GoldenPath is your personal guide to Ateneo de Naga University. We ensure you get where you need to be, without the guesswork.</h2>
+        </header>
+    
+        <section class="info-cards">
+            <div class="card">
+                <i class="fas fa-users"></i>
+                <h3>500+ active users</h3>
+                <p>Join a growing community of students, faculty, and visitors who rely on CampusNavigator.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>1500+ locations mapped</h3>
+                <p>Easily find classrooms, offices, and key campus facilities with our comprehensive database.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-calendar-alt"></i>
+                <h3>200+ events tracked</h3>
+                <p>Stay informed about important university events, from academic schedules to extracurricular activities.</p>
+            </div>
+        </section>
+    </section>
+    
+    <section class="info-section">
+        
+        <div class="info-container">
+            <div class="text-box">
+                <h2>Students.</h2>
+                <p>
+                    Never get lost on campus again. Whether you're a freshman navigating your first day or a senior 
+                    rushing to class, GoldenPath helps you locate buildings, classrooms, and key facilities so you can 
+                    focus on what truly matters—your education.
+                </p>
+            </div>
+            <div class="image-box">
+                <div class="image-container student-box">
+                    <img src="{% static 'images/Girl1.png' %}" alt="Student Image">
+                </div>
+            </div>
+        </div>
+
+        <div class="info-container">
+            <div class="text-box1">
+                <h2>Faculty & Staff.</h2>
+                <p>
+                    Streamline your campus experience. Whether you're heading to a lecture, a meeting, or an event, 
+                    GoldenPath helps you find the fastest routes so you can focus on teaching, mentoring, and making an impact.
+                </p>
+            </div>
+            <div class="image-box">
+                <div class="image-container1 faculty-box">
+                    <img src="{% static 'images/tombits2.png' %}" alt="Faculty Image">
+                </div>
+            </div>
+        </div>
+
+        <div class="info-container">
+            <div class="text-box2">
+                <h2>Guests & Visitors.</h2>
+                <p>
+                    Stay connected and confident. Whether you're visiting for an event, a parent-teacher meeting, 
+                    or simply exploring the campus, GoldenPath ensures you always know where to go.
+                </p>
+            </div>
+            <div class="image-box">
+                <div class="image-container Bangs-box">
+                    <img src="{% static 'images/Bangs2.png' %}" alt="Guest Image">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <section class="start-navigation">
+        <div class="start-navigation-box">
+          <h2>Start your <span class="highlight">GoldenPath Navigation Journey.</span></h2>
+          <p>Join us today and take the first step toward a smarter, stress-free campus experience.</p>
+          <div class="start-navigation-buttons">
+            <button class="get-started">Get Started</button>
+            <button class="learn-more">Learn More</button>
+          </div>
+        </div>
+      </section>
+    
+      <section class="go-further">
+        <h2>Go further</h2>
+        <div class="go-further-cards">
+          <div class="go-further-card">
+            <h3><i class="fas fa-book-open"></i> About GoldenPath</h3>
+            <p>Discover how GoldenPath helps you find buildings, classrooms, and key facilities effortlessly.</p>
+            <button class="card-button">Learn More</button>
+          </div>
+          <div class="go-further-card">
+            <h3><i class="fas fa-comments"></i> Community Support</h3>
+            <p>Need assistance? Join discussions and connect with fellow students and faculty for navigation tips.</p>
+            <button class="card-button">Join now</button>
+          </div>
+          <div class="go-further-card">
+            <h3><i class="fas fa-lightbulb"></i> Smart Campus Tips</h3>
+            <p>Learn how to maximize your campus experience with expert guides and resources.</p>
+            <button class="card-button">Get Started</button>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="footer-container">
+          <div class="newsletter">
+            <h1>GoldenPath.</h1>
+            <p class="subscribe-text">Subscribe to our Newsletter</p>
+            <p class="description">
+              Stay updated with the latest campus navigation tips, feature updates, and university news.
+            </p>
+            <button class="subscribe-btn">Subscribe</button>
+          </div>
+      
+          <div class="footer-links">
+            <div class="column">
+              <h3>Product</h3>
+              <ul>
+                <li>Features</li>
+                <li>Navigation System</li>
+                <li>Smart Recommendations</li>
+                <li>Accessibility Options</li>
+                <li>Pricing</li>
+                <li>Compare Plans</li>
+              </ul>
+            </div>
+            <div class="column">
+              <h3>Platform</h3>
+              <ul>
+                <li>API & Integrations</li>
+                <li>Campus Partners</li>
+                <li>Mobile App</li>
+                <li>Web Dashboard</li>
+              </ul>
+            </div>
+            <div class="column">
+              <h3>Support</h3>
+              <ul>
+                <li>Help Center</li>
+                <li>Community Forum</li>
+                <li>Contact Support</li>
+                <li>FAQs</li>
+                <li>System Status</li>
+              </ul>
+            </div>
+            <div class="column">
+              <h3>About</h3>
+              <ul>
+                <li>Our Mission</li>
+                <li>Blog</li>
+                <li>Careers</li>
+                <li>Campus Stories</li>
+                <li>Social Impact</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      
+        <div class="footer-bottom">
+            <p>© 2025 GoldenPath, Inc. | Privacy | Terms | Manage Cookies</p>
+            <div class="social-icons">
+              <i class="fab fa-linkedin-in"></i>
+              <i class="fab fa-instagram"></i>
+              <i class="fab fa-facebook"></i>
+              <i class="fab fa-youtube"></i>
+              <i class="fab fa-x-twitter"></i>
+            </div>
+          </div>
+          
+      </footer>
+      <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+      
+      <script>
+        function handleNavSearch(event) {
+    if (event.key === 'Enter') {
+        const query = event.target.value.toLowerCase().trim();
+        const routes = {
+            "home": "#",
+            "directory": "#", 
+            "explore": "#",
+            "features": "#", 
+            "help": "#",
+            "faqs": "#" 
+        };
+
+        if (routes[query]) {
+            window.location.href = routes[query];
+        } else {
+            window.location.href = `/search/?q=${encodeURIComponent(query)}`;
+        }
+    }
+}
+      </script>
+
+      <script>
+  document.querySelector('.get-started').addEventListener('click', () => {
+    document.querySelector('.info-section').scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+</script>
+</body>
+</html>

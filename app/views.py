@@ -4,3 +4,6 @@ from django.shortcuts import render
 
 def homepage(request):
     return render(request, 'index.html')
+
+def signup_view(request):
+    return render(request, 'signup.html')

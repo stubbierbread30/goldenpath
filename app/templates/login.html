@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | GoldenPath</title>
+  <link rel="stylesheet" href="{% static 'home/login.css' %}" />
+</head>
+
+<body>
+  <div class="login-wrapper">
+    <div class="card">
+      <!-- LEFT SIDE -->
+      <div class="left-content">
+        <div class="login-title">
+          <h2>Login</h2>
+          <p>Doesn’t have an account yet? 
+            <a href="{% url 'signup' %}">Sign Up</a>
+          </p>
+        </div>
+
+        <form method="POST" onsubmit="return handleLogin(event)">
+          {% csrf_token %}
+          <div class="input-group">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="user018939@gmail.com" required>
+          </div>
+
+          <div class="input-group">
+            <div class="label-row">
+              <label for="password">Password</label>
+              <a href="#">Forget Password?</a>
+            </div>
+            <input type="password" id="password" name="password" placeholder="**********" required>
+          </div>
+
+          <div class="remember-me">
+            <input type="checkbox" id="remember" name="remember">
+            <label for="remember">Remember me?</label>
+          </div>
+
+          <button type="submit" class="login-btn" id="loginBtn" disabled>LOGIN</button>
+
+          <div class="or">or login with</div>
+
+          <button type="button" class="google-btn">
+            <img src="{% static 'images/google.png' %}" alt="Google logo"> Google
+          </button>
+        </form>
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="right-content">
+        <div class="overlay"></div>
+        <div class="right-inner">
+          <h1>Welcome<br>Back!</h1>
+          <p>Sign in to find your way around campus effortlessly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

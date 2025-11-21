@@ -1,0 +1,223 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: linear-gradient(to bottom, #004e92, #000000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+.black-container {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.938);
+    border-radius: 25px;
+    padding: 25px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+}
+
+.card {
+    display: flex;
+    width: 900px;
+    height: 520px;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.left-content {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-title h2 {
+    color: #004e92;
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.login-title p {
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.login-title a {
+    color: #004e92;
+    text-decoration: none;
+}
+
+.input-group {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.input-group input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+
+.label-row a {
+    font-size: 12px;
+    color: #004e92;
+    text-decoration: none;
+}
+
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.remember-me input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+    margin: 0;
+    accent-color: #004e92;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background: #004e92;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.or {
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 12px;
+}
+
+.google-btn {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e74c3c;
+    border-radius: 25px;
+    color: #e74c3c;
+    background: transparent;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.google-btn img {
+    width: 18px;
+    height: 18px;
+}
+
+.right-content {
+    flex: 1.2;
+    background: url("../images/adnu.png") no-repeat center;
+    background-size: cover;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 50px;
+    position: relative;
+    color: white;
+}
+
+.right-inner {
+    color: white;
+    max-width: 300px;
+}
+
+.right-inner h1 {
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.right-inner p {
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+    .right-inner h1 {
+        font-size: 32px;
+    }
+
+    .right-inner p {
+        font-size: 18px;
+    }
+
+    .right-inner {
+        padding-left: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .right-content {
+        padding: 20px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .right-inner h1 {
+        font-size: 28px;
+    }
+
+    .right-inner p {
+        font-size: 16px;
+    }
+}
+
+input, .login-btn, .google-btn, a {
+    transition: all 0.3s ease;
+}
+
+.google-btn:hover {
+    background: #e74c3c;
+    color: #fff;
+}
+
+.google-btn:hover img {
+    filter: brightness(0) invert(1);
+}

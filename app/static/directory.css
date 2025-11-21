@@ -1,0 +1,415 @@
+html, body {
+    min-height: 100vh;
+    margin: 0;
+    padding-bottom: 80px;
+    background: linear-gradient(to bottom, #0D0D0D, #001425);
+    color: white;
+    font-family: 'Inter', sans-serif;
+    background-attachment: fixed;
+    background-size: cover;
+    box-sizing: border-box;
+}
+
+.search-input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.search-input-container input {
+    background-color: #06437899;
+    color: rgba(255, 255, 255, 0.95); 
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: background-color 0.3s ease;
+    }
+
+.search-input-container input::placeholder {
+  color: rgba(255, 255, 255, 0.6); 
+}
+
+/* Navbar */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;            
+    padding: 0 24px;        
+    background-color: #030303;
+    color: #fff;
+    margin: 0 auto;
+}
+
+.nav-left, .nav-center, .nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.nav-left .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.username {
+    font-size: 15px;
+    color: #ccc;
+    margin-left: 8px;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 24px;
+    color: #fff;
+}
+
+.nav-right a {
+    color: #ccc;
+    text-decoration: none;
+    margin-left: 40px;
+    font-size: 15px;
+}
+
+.nav-right a.active {
+    font-weight: 600;
+    color: #fff;
+}
+
+.nav-right .search-icon {
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 35px;
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 280px;
+    height: 100%;
+    background-color: #000;
+    color: white;
+    padding: 20px;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    }
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar .logo {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.sidebar .profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.profile-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+  font: inherit;
+}
+
+
+.profile-pic {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-info {
+  margin-left: 12px;
+}
+
+.profile-info .name {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.profile-info .username {
+  margin: 0 0;
+  font-size: 14px;
+  color: gray;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #383838;
+  margin: 20px 0;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+  margin-top: 40px;
+}
+
+.nav-links li {
+  margin: 20px 0;
+  margin-left: 10px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links i {
+  margin-right: 10px;
+}
+
+.logout {
+  margin-top: 180px;
+  margin-left: 10px;
+}
+
+.logout a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.logout i {
+  margin-right: 10px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 900;
+  display: none;
+}
+
+.overlay.show {
+  display: block;
+}
+
+.directory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 40px 60px;
+}
+
+.directory-text h1 {
+    font-size: 32px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.directory-text p {
+    margin-top: 12px;
+    margin-bottom: -30px;
+    font-size: 15px;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.back-link {
+    color: white;
+    text-decoration: underline;
+    font-size: 15px;
+    margin-top: 4px;
+}
+
+.directory-search-bar {
+    text-align: right;
+    margin: -2rem 3.5rem 2rem 2rem;
+    display: block;
+}
+
+
+.directory-search-bar input {
+  font-family: 'Inter', sans-serif;
+  background-color: #0000005c;
+  color:white;
+  padding: 8px;
+  width: 300px;
+  max-width: 90%;
+  font-size: 14px;
+  border: 1px solid #ffffff7c;
+  border-radius: 50px;
+}
+
+.directory-container1 {
+    background-color: rgba(63, 63, 63, 0.25);
+    margin: 32px 60px;
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    color: white;
+}
+
+
+.directory-container1 img {
+    width: 120px;
+    height: 120px;
+    border-radius: 12px;
+    margin-right: 25px;
+    margin-left: -15px;
+    
+}
+.directory-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 120px;
+    flex: 1;
+}
+
+.directory-info h2 {
+    margin: 0;
+    margin-bottom: 5px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.directory-info p {
+    margin: 4px 0;
+    font-size: 16px;
+    color: #ddd;
+}
+
+.directory-info .subtext {
+    font-size: 13px;
+    color: #aaa;
+}
+.directory-title {
+    display: flex;
+    align-items: center;
+}
+
+.building-name {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+.top-right-buttons {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.save-icon {
+    font-size: 20px;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    margin-right: 5px;
+}
+
+.save-icon.saved {
+    color: #FFD700;
+}
+
+.see-more-rooms-btn {
+  text-decoration: none; 
+  font-family: 'Inter', sans-serif;
+  width: 140px;
+  height: 35px;
+  background-color: #00427B;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.see-more-rooms-btn i {
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+.see-more-rooms-btn:hover {
+    background-color: #003659;
+}
+
+.directory-container1 {
+    transition: height 0.5s ease;
+    overflow: hidden;
+    height: 120px;
+}
+
+.directory-content {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    margin-left: 20px;
+}
+
+.directory-footer-links {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    font-size: 12px;
+    color: #ddd;
+}
+
+.info-link {
+    color: #9DD1FF;
+    font-size: 12px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.info-link .text {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    margin-left: 4px;
+}
+
+.info-link:hover {
+    color: #7bb5e7;
+}
+

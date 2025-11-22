@@ -7,10 +7,11 @@
     <title>Directory | GoldenPath</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="{% static 'directory.css' %}">
+    <link rel="stylesheet" href="{% static 'navbar.css' %}">
 </head>
 <body>
 <!-- Navigation Bar -->
-  <nav class="navbar">
+  <!-- <nav class="navbar">
     <div class="nav-left">
       <button class="profile-button" onclick="toggleSidebar()">
         <img src="{% static 'assets/profile.png' %}" alt="Profile" class="avatar">
@@ -31,7 +32,9 @@
             <input type="text" id="navSearch" placeholder="Search..." onkeydown="handleNavSearch(event)" />
         </div>
     </div>
-  </nav>
+  </nav> -->
+  {% include 'navbar.html' %}
+  
 <!-- Sidebar profile -->
   <div id="sidebar" class="sidebar">
     <div class="sidebar-header">

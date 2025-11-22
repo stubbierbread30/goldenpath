@@ -1,0 +1,18 @@
+{% load static %}
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="{% static 'images/logo.png' %}" alt="GoldenPath Logo" class="logo-img">
+    </div>
+
+    <div class="nav-center">
+        <a href="{% url 'homepage' %}" class="active">Home</a>
+        <a href="#">Features</a>
+        <a href="#">Explore</a>
+        <a href="{% url 'directory' %}">Directory</a>
+        <a href="#">Help & FAQs</a>
+    </div>
+
+    <div class="nav-right">
+        <a class="login-btn" href="{% url 'login' %}">Login</a>
+    </div>
+</nav>

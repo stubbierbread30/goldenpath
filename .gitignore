@@ -2,3 +2,4 @@ app/__pycache__
 goldenpath/__pycache__
 app/migrations/__pycache__
 app/.DS_Store
+app/templatetags/__pycache__

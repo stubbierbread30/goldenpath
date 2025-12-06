@@ -22,6 +22,9 @@ def settings_view(request):
     return render(request, 'settings.html', {'user': request.user})
 
 def signup_view(request):
+    if request.user.is_authenticated:
+        return redirect('homepage')
+    
     if request.method == 'POST':
         firstname = request.POST.get('Firstname', '').strip()
         lastname = request.POST.get('Lastname', '').strip()
@@ -58,6 +61,9 @@ def signup_view(request):
 
 
 def login_view(request):
+    if request.user.is_authenticated:
+        return redirect('homepage')
+    
     if request.method == "POST":
         email = request.POST.get("email", "").strip().lower()
         password = request.POST.get("password")

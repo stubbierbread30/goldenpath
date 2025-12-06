@@ -20,8 +20,16 @@
           </p>
         </div>
 
-        <form method="POST" onsubmit="return handleLogin(event)">
+        <form method="POST">
           {% csrf_token %}
+          <input type="hidden" name="next" value="{{ request.GET.next|default:'' }}">
+          {% if messages %}
+            <ul class="messages">
+              {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
           <div class="input-group">
             <label for="email">Email address</label>
             <input type="email" id="email" name="email" placeholder="user018939@gmail.com" required>
@@ -40,7 +48,7 @@
             <label for="remember">Remember me?</label>
           </div>
 
-          <button type="submit" class="login-btn" id="loginBtn" disabled>LOGIN</button>
+          <button type="submit" class="login-btn" id="loginBtn">LOGIN</button>
 
           <div class="or">or login with</div>
 

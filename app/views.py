@@ -14,10 +14,14 @@ def homepage(request):
 @login_required(login_url='/login/')
 def directory_view(request):
     return render(request, 'directory.html', {'user': request.user})
+
+@login_required(login_url='/login/')
+def explore_view(request):
+    return render(request, 'explore.html', {'user': request.user})
   
 @login_required(login_url='/login/')
 def settings_view(request):
-    return render(request, 'settings.html')
+    return render(request, 'settings.html', {'user': request.user})
 
 def signup_view(request):
     if request.method == 'POST':

@@ -7,14 +7,17 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
+  
 def homepage(request):
     return render(request, 'index.html', {'user': request.user})
-
 
 @login_required(login_url='/login/')
 def directory_view(request):
     return render(request, 'directory.html', {'user': request.user})
-
+  
+@login_required(login_url='/login/')
+def settings_view(request):
+    return render(request, 'settings.html')
 
 def signup_view(request):
     if request.method == 'POST':

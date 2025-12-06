@@ -1,14 +1,15 @@
 {% load static %}
+{% load nav_active %}
 <nav class="navbar">
     <div class="nav-left">
         <img src="{% static 'images/logo.png' %}" alt="GoldenPath Logo" class="logo-img">
     </div>
 
     <div class="nav-center">
-        <a href="{% url 'homepage' %}" class="active">Home</a>
+        <a href="{% url 'homepage' %}" class="{% active 'homepage' %}">Home</a>
         <a href="#">Features</a>
-        <a href="{% url 'explore' %}">Explore</a>
-        <a href="{% url 'directory' %}">Directory</a>
+        <a href="{% url 'explore' %}" class="{% active 'explore' %}">Explore</a>
+        <a href="{% url 'directory' %}" class="{% active 'directory' %}">Directory</a>
         <a href="#">Help & FAQs</a>
     </div>
 

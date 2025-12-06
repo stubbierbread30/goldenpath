@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore | GoldenPath</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+  <link rel="stylesheet" href="{% static 'explore.css' %}" />
+</head>
+
+<body>
+
+  {% include "navbar.html" %}
+
+  <div class="main-content">
+    <aside class="sidebar">
+      <h2>Location Details</h2>
+      <hr class="blue-thin">
+      <div class="info-card">
+        <div class="label">Building Name & Room Code</div>
+        <div class="value">Burns Hall, Room: B102</div>
+      </div>
+      <div class="info-card">
+        <div class="label">Facilities inside</div>
+        <div class="value">Infirmary</div>
+      </div>
+
+      <h2>Navigation Assistance</h2>
+      <hr class="blue-thin">
+      <div class="info-card">
+        <div class="label">Current Location</div>
+        <div class="value">You are here: Xavier Hall</div>
+      </div>
+      <div class="info-card">
+        <div class="label">Suggested Route</div>
+        <div class="value">Turn right after Xavier Hall to reach Burns Hall</div>
+      </div>
+      <div class="info-card">
+        <div class="label">Estimated Walking Time</div>
+        <div class="value">Approx. 2–3 mins</div>
+      </div>
+
+      <h2>Others</h2>
+      <h4 class="subheading">Crowd Density Tracker</h4>
+      <div class="info-card">
+        <div class="label">Library</div>
+        <div class="tag moderate">Moderately Crowded</div>
+      </div>
+      <div class="info-card">
+        <div class="label">Bonoan Canteen</div>
+        <div class="tag crowded">Very Crowded</div>
+      </div>
+
+      <div class="buttons">
+        <a href="{% url 'directory' %}"><button class="blue">Go to directory</button></a>
+        <!-- <a href="{ url 'feedback' }"><button class="red">Report an issue</button></a> -->
+      </div>
+    </aside>
+
+    <div class="map-area">
+      <div class="search-bar-overlay">
+        <input type="text" id="startInput" placeholder="Current location (e.g. Xavier Hall)" class="search-input" />
+        <div class="divider"></div>
+        <input type="text" id="searchInput" placeholder="Destination (e.g. Burns Hall or P217)" class="search-input" />
+        <button onclick="searchLocation()" class="material-symbols-outlined">Search</button>
+      </div>
+
+      <div id="map" class="map-container"></div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+  <script src="{% static 'map.js' %}"></script>
+
+</body>
+
+</html>

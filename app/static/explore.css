@@ -1,0 +1,613 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #05080e;
+    color: white;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+.search-input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.search-input-container input {
+  background-color: #06437899;
+  color: rgba(255, 255, 255, 0.95);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+.search-input-container input::placeholder {
+  color: rgba(255, 255, 255, 0.6); 
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;          
+    padding: 0 24px;         
+    background-color: #030303;
+    color: #fff;
+    margin: 0 auto;
+}
+
+.nav-left, .nav-center, .nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.nav-left .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.username {
+    font-size: 15px;
+    color: #ccc;
+    margin-left: 8px;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 24px;
+    color: #fff;
+}
+
+.nav-right a {
+    color: #ccc;
+    text-decoration: none;
+    margin-left: 40px;
+    font-size: 15px;
+}
+
+.nav-right a.active {
+    font-weight: 600;
+    color: #fff;
+}
+
+.nav-right .search-icon {
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 35px;
+}
+
+  .main-content {
+    display: flex;
+    height: calc(100vh - 60px);
+  }
+
+hr.blue-thin {
+  border: none;
+  border-top: 0.5px solid rgba(157, 209, 255, 0.50); 
+  margin: 20px 0;
+}
+
+.nsidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 280px;
+  height: 100%;
+  background-color: #000;
+  color: white;
+  padding: 80px;
+  padding-bottom: 80px;
+  z-index: 1000;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar .logo {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.sidebar .profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.profile-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+  font: inherit;
+}
+
+
+.profile-pic {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-info {
+  margin-left: 12px;
+}
+
+.profile-info .name {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.profile-info .username {
+  margin: 0 0;
+  font-size: 14px;
+  color: gray;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #383838;
+  margin: 20px 0;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+  margin-top: 40px;
+}
+
+.nav-links li {
+  margin: 20px 0;
+  margin-left: 10px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links i {
+  margin-right: 10px;
+}
+
+.logout {
+  margin-top: 180px;
+  margin-left: 10px;
+}
+
+.logout a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.logout i {
+  margin-right: 10px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 900;
+  display: none;
+}
+
+.overlay.show {
+  display: block;
+}
+
+  .sidebar {
+    width: 350px;
+    background: #05080e;
+    padding: 20px;
+    overflow-y: auto;
+  }
+
+  .sidebar h2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #ffffff;
+  }
+
+  .sidebar p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+  }
+
+  button.material-symbols-outlined {
+    align-items: center;
+  background: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px; 
+  width: 100px;
+}
+
+
+  .buttons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+  }
+
+.buttons button {
+  min-width: 294px;
+  max-height: 50px;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;;
+}
+
+
+
+  .buttons .report {
+    background: #840000;
+  }
+
+  .map-area {
+    flex: 1;
+    background: #1e293b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .map-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  
+
+  .search-bar-overlay {
+    position: absolute;
+    top: 50px;
+    right: 40px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    background: #0f172a;
+    border-radius: 999px;
+    padding: 16px 28px; 
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    font-size: 1.1rem; 
+    height: 60px;
+  }
+  
+
+  .search-input {
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+    font-size: 0.95rem;
+    width: 600px;
+  }
+
+  .search-icon {
+    margin-left: 10px;
+    color: white;
+    font-size: 1.2rem;
+  }
+
+  .info-card {
+    background: #1f2937;
+    padding: 10px 15px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+  }
+
+  .label {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    margin-bottom: 4px;
+  }
+
+  .value {
+    font-size: 0.9rem;
+    color: white;
+  }
+
+  .subheading {
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: #9ca3af;
+    margin: 10px 0 5px;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    color: white;
+    margin-top: 4px;
+    width: fit-content;
+  }
+
+  .tag.moderate {
+    background-color: #00427B;
+  }
+
+  .tag.crowded {
+    background-color: #01305a;
+  }
+
+  .buttons button.blue {
+    background-color: #00427B;
+  }
+
+  .buttons button.red {
+    background-color: #840000;
+  }
+
+  .map-container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 0;
+  }
+  
+
+  .search-bar-overlay {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    z-index: 100;
+    background: #0f172a;
+    border-radius: 999px;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .divider {
+    margin-right: 10px;
+  height: 20px;
+  width: 1px;
+  background-color: rgba(139, 153, 165, 0.59);
+}
+  
+  .search-input {
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #f9fafb;
+    font-size: 0.95rem;
+    width: 300px;
+    transition: width 0.3s ease;
+  }
+  
+  .search-input:focus {
+    width: 400px;
+  }
+  
+  .search-icon {
+    color: #ffffff;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  .leaflet-control-instructions {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+    max-width: 300px;
+  }
+  
+.leaflet-routing-container {
+  position: fixed !important;
+  bottom: 24px;
+  left: 25%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  width: 90%;
+  max-width: 500px;
+  background-color: #0f172a;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  padding: 20px 24px;
+  font-family: "Segoe UI", "Roboto", sans-serif;
+  font-size: 14px;
+  color: #f1f5f9;
+  border: 1px solid #1e293b;
+}
+
+
+.leaflet-routing-instructions {
+  max-height: 220px;
+  overflow-y: auto;
+  margin-top: 12px;
+  padding-right: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: #334155 transparent;
+}
+
+.leaflet-routing-instructions::-webkit-scrollbar {
+  width: 6px;
+}
+.leaflet-routing-instructions::-webkit-scrollbar-thumb {
+  background-color: #334155;
+  border-radius: 4px;
+}
+
+.leaflet-routing-instruction {
+  padding: 10px 0;
+  border-bottom: 1px solid #1e293b;
+  color: #e2e8f0;
+  line-height: 1.5;
+  transition: background-color 0.2s ease;
+}
+
+.leaflet-routing-instruction:hover {
+  background-color: #1e293b;
+  border-radius: 6px;
+  padding-left: 10px;
+}
+
+.leaflet-routing-instruction-active {
+  background-color: #1d4ed8;
+  border-left: 4px solid #60a5fa;
+  padding-left: 12px;
+  font-weight: 600;
+  color: #ffffff;
+  border-radius: 6px;
+}
+
+.leaflet-routing-collapse-btn {
+  display: none !important;
+}
+
+.mode-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.mode-btn {
+  padding: 8px 16px;
+  background-color: #1e293b;
+  color: #f1f5f9;
+  border: 1px solid #334155;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.mode-btn:hover {
+  background-color: #2563eb;
+  color: white;
+}
+
+.mode-btn.active {
+  background-color: #2563eb;
+  color: white;
+  font-weight: 600;
+}
+
+.leaflet-routing-container {
+  animation: fadeInRoute 0.5s ease-in-out;
+  padding: 12px 15px;
+  background-color: rgba(22, 27, 34, 0.9);
+  border-radius: 8px;
+  color: white;
+  max-width: 320px;
+}
+
+.leaflet-routing-summary {
+  margin-bottom: 15px;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+
+.leaflet-routing-alt tr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.leaflet-routing-alt td:first-child {
+  padding-right: 15px;
+}
+
+.leaflet-routing-alt td:last-child {
+  text-align: right;
+  min-width: 50px;
+}
+
+.leaflet-routing-alt tr:last-child {
+  margin-bottom: 0;
+}
+
+.leaflet-routing-alt tr:last-child td:last-child {
+  display: none;
+}
+
+
+.leaflet-overlay-pane svg path.leaflet-routing-alt {
+  stroke-dasharray: 10;
+  animation: dashmove 1.2s linear infinite;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 3px #38bdf8);
+}
+
+@keyframes dashmove {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fadeInRoute {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animated-dash {
+  stroke-dasharray: 8 12;
+  animation: dashmove 1.5s linear infinite;
+}
+
+@keyframes dashmove {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+

@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'home/settings.css' %}" />
+  </head>
+  <body>
+  <div class="settings-manage">
+    <div class="div">
+      <div class="overlap">
+        <div class="title">Settings</div>
+        <a href="#" class="text-wrapper-2">Manage Profile</a>
+        <a href="#" class="text-wrapper-5">Activity</a>
+        <a href="#" class="text-wrapper-4">Appearance</a>
+        <a href="#" class="text-wrapper-3">Accessibility</a>
+        <a href="#" class="text-wrapper-6">Account Settings</a>
+        <a href="#" class="text-wrapper-7">Privacy</a>
+      </div>
+
+      <div class="overlap-group">
+        <div class="text-wrapper-8">Your profile</div>
+        <div class="overlap-2">
+          <p class="p">Please update your profile settings here</p>
+        </div>
+      </div>
+      <div class="text-wrapper-10">Name</div>
+      <div class="div-wrapper">
+        <input type="text" placeholder="First Name" class="text-wrapper-12" />
+      </div>
+      <div class="overlap-3">
+        <input type="text" placeholder="Last Name" class="text-wrapper-13" />
+      </div>
+      <div class="overlap-4">
+        <button class="text-wrapper-14">Save</button>
+      </div>
+
+      <div class="text-wrapper-11">Username</div>
+      <div class="overlap-6">
+        <input
+          type="text"
+          placeholder="Choose a unique username"
+          class="text-wrapper-16"
+        />
+      </div>
+
+      <div class="text-wrapper-19">URL</div>
+      <div class="overlap-group-2">
+        <input
+          type="text"
+          placeholder="Paste any social media links"
+          class="text-wrapper-20"
+        />
+      </div>
+
+      <div class="overlap-5">
+        <button class="text-wrapper-15">Update profile</button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

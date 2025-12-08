@@ -16,8 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('status/<int:building_id>/update/', views.update_crowd_status_ajax, name='update_crowd_status_ajax'),
     path('', include('app.urls')),
 ]

@@ -1,0 +1,433 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoldenPath</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'phelan.css' %}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+  <!-- <nav class="navbar">
+    <div class="nav-left">
+      <button class="profile-button" onclick="toggleSidebar()">
+        <img src="{% static 'assets/profile.png' %}" alt="Profile" class="avatar">
+        <span class="username">maxverstappen</span>
+      </button>
+  </div>
+    <div class="nav-center">
+      <span class="logo">GoldenPath<span class="dot">.</span></span>
+    </div>
+    <div class="nav-right">
+      <a>Home</a>
+      <a>Features</a>
+      <a>Explore</a>
+      <a href="{% url 'directory' %}" class="active">Directory</a>
+      <a>Help & FAQs</a>
+      <i class="fas fa-search fa-lg search-icon" onclick="toggleSearchInput()"></i>
+        <div class="search-input-container" style="display: none;">
+            <input type="text" id="navSearch" placeholder="Search..." onkeydown="handleNavSearch(event)" />
+        </div>
+    </div>
+  </nav> -->
+  {% csrf_token %}
+  {% include 'navbar.html' %}
+  
+<!-- Sidebar profile -->
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+      <h2 class="logo">GoldenPath.</h2>
+      <div class="profile">
+        <img src="{% static 'assets/profile.png' %}" alt="Profile" class="profile-pic">
+        <div class="profile-info">
+          <p class="name">Max Verstappen</p>
+          <p class="username">@maxverstappen</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+    
+    <ul class="nav-links">
+      <li><a><i class="fas fa-home"></i> Home</a></li>
+      <li><a><i class="fas fa-compass"></i> Explore</a></li>
+      <li><a href="{% url 'directory' %}"><i class="fas fa-list"></i> Search & Directory</a></li>
+      <li><a><i class="fas fa-bell"></i> Notifications</a></li>
+      <li><a><i class="fas fa-bookmark"></i> Saved Buildings</a></li>
+      <li><a><i class="fas fa-flag"></i> Feedback & Reporting</a></li>
+      <li><a><i class="fas fa-cog"></i> Settings</a></li>
+    </ul>
+
+  <div class="logout">
+    <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </div>
+  </div>
+
+  <div id="overlay" class="overlay" onclick="closeSidebar()"></div>
+
+  <!-- Directory Header -->
+  <div class="directory-header">
+      <div class="directory-text">
+          <h1>Directory</h1>
+          <p>Explore campus buildings and facilities</p>
+      </div>
+      <a class="back-link">Back to explore</a>
+  </div>
+
+  <div class="directory-container1">
+    <div class="directory-content">
+        <img src="/static/assets/santos.png" alt="Phelan Hall">
+        <div class="directory-info">
+            <div class="directory-top-row">
+                <div class="directory-title">
+                    <h2 class="building-name">Santos Hall</h2>
+                </div>
+            </div>
+            <p>Floors: 1, 2, 3</p>
+            <p class="subtext">Located beside Phelan Hall and Xavier Hall</p>
+
+<div class="directory-footer-links">
+<a href="/map/?building=Phelan" class="info-link">
+  <span class="emoji">🗺️</span>
+  <span class="text">See on map</span>
+</a>
+
+<a href="#" class="info-link1" onclick="openServicesPopup(event)">
+  <span class="emoji">🔧</span>
+  <span class="text">See services and amenities</span>
+</a>
+
+</div>
+    </div>
+
+        <div class="top-right-buttons">
+            <i class="far fa-bookmark save-icon" onclick="toggleSave(this)"></i>
+<a href="#" class="see-more-rooms-btn"><i class="fas fa-chevron-left"></i>
+    Back 
+</a>
+        </div>
+<div class="extra-container-wrapper">
+    <div class="extra-container">
+        <div class="crowd-density">
+            <span>Crowd Density Tracker</span>
+            <div class="status-wrapper {{ status.current_status }}">
+                <div class="status-group"> 
+                    <div class="status not-crowded" id="santos-light" style="display: inline-block;"> 
+                        <i class="fas fa-smile"></i> Not Crowded
+                    </div>
+                    <div class="status moderately-crowded" id="santos-moderate" style="display: inline-block;">
+                        <i class="fas fa-meh"></i> Moderately Crowded
+                    </div>
+                    <div class="status very-crowded" id="santos-heavy" style="display: inline-block;">
+                        <i class="fas fa-frown"></i> Very Crowded
+                    </div>
+                </div>
+            </div>
+            <div class="update-link">
+                <a href="#" onclick="openStatusModal()">Want to update the crowd status for accuracy?</a>
+            </div>
+
+<div id="statusModal" class="status-modal-overlay">
+  <div class="status-modal">
+    <span class="close-btn" onclick="closeStatusModal()">&times;</span>
+    <h2 class="modal-title">Update Crowd Status</h2>
+<p class="modal-subtitle">Help others by reporting the current crowd level.</p>
+<div id="thankYouPopup" class="thank-you-popup">
+  <p>✅ Thank you for your update! Your input helps improve our crowd data.</p>
+</div>
+    <div class="status-options">
+      <button class="status-btn light" onclick="submitStatus('{{ building.id }}', 'light')">Light</button>
+      <button class="status-btn moderate" onclick="submitStatus('{{ building.id }}', 'moderate')">Moderate</button>
+      <button class="status-btn heavy" onclick="submitStatus('{{ building.id }}', 'heavy')">Heavy</button>
+    </div>
+  </div>
+</div>
+
+
+<div id="servicesPopup" class="popup-overlay">
+  <div class="popup-box">
+    <span class="close-btn" onclick="closeServicesPopup()">&times;</span>
+    <h2>Services & Amenities</h2>
+    <p>This location offers the following:</p>
+
+    <h3>📡 Wi-Fi Access</h3>
+    <ul class="service-list">
+      <li><strong>College Learning Hub:</strong> <span class="tag free">Free</span></li>
+      <li><strong>DCS Office:</strong> <span class="tag restricted">Restricted</span></li>
+    </ul>
+  </div>
+</div>
+
+    </div>
+     <div class="emergency-assistance">
+        <h3>Emergency Assistance</h3>
+        <hr class="separator">
+        <div class="assistance-item">
+            <strong>Emergency Exits</strong>
+            <span>Stair located at the end of the building</span>
+        </div>
+        <hr class="separator">
+        <div class="assistance-item">
+            <strong>Security Stations</strong>
+            <span>Located at every building entrance</span>
+        </div>
+    </div>
+    <div class="accessibility-inclusion">
+        <h3>Accessibility & Inclusion</h3>
+        <div class="checkbox-group">
+            <div class="checkbox-item">
+                <input type="checkbox" id="pwd-pathways" checked disabled>
+                <label for="pwd-pathways">PWD-friendly pathways</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="elevators" disabled>
+                <label for="elevators">Elevators</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="bike-rack" checked disabled>
+                <label for="bike-rack">Bicycle parking rack</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="ramps" checked disabled>
+                <label for="ramps">Ramps</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="parking-areas" disabled>
+                <label for="parking-areas">Parking Areas</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="water-refilling" disabled>
+                <label for="water-refilling">Water refilling stations</label>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="additional-container">
+        <div class="floor">
+            <span>First Floor/Ground Floor</span>
+            <div class="floor-buttons">
+            
+<button class="floor-btn" onclick="window.location.href='/map/?building=P111'">
+  P111 <i class="fas fa-arrow-right"></i>
+</button>
+                <button class="floor-btn" onclick="window.location.href='/map/?building=P112'">P112 <i class="fas fa-arrow-right"></i></button>
+                <button class="floor-btn" onclick="window.location.href='/map/?building=P113'">P113 <i class="fas fa-arrow-right"></i></button>
+                <button class="floor-btn" onclick="window.location.href='P111.html'">P114 <i class="fas fa-arrow-right"></i></button>
+                <button class="floor-btn" onclick="window.location.href='P111.html'">P115 <i class="fas fa-arrow-right"></i></button>
+                <button class="floor-btn" onclick="window.location.href='P111.html'">P116 <i class="fas fa-arrow-right"></i></button>
+                <button class="floor-btn" onclick="window.location.href='P111.html'">P117 <i class="fas fa-arrow-right"></i></button>
+                <button class="floor-btn" onclick="window.location.href='P111.html'">P118 <i class="fas fa-arrow-right"></i></button>
+                <button class="floor-btn" onclick="window.location.href='P111.html'">P119 <i class="fas fa-arrow-right"></i></button>
+                <button class="instructional-media-btn" onclick="window.location.href='/map/?building=Instructional Media Center'">Admissions and Aid <i class="fas fa-arrow-right"></i></button>
+                <button class="instructional-media-btn" onclick="window.location.href='/map/?building=Instructional Media Center'">Registrar's Office <i class="fas fa-arrow-right"></i></button>
+                <button class="instructional-media-btn" onclick="window.location.href='/map/?building=Instructional Media Center'">Campus Ministry Office <i class="fas fa-arrow-right"></i></button>
+                <button class="check-restrooms-btn" onclick="window.location.href='/map/?building=Phelan Restroom'">Check Restrooms <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <div class="floor">
+            <span>Second Floor</span>
+            <div class="floor-buttons">
+                <button class="floor-btn">P211 <i class="fas fa-arrow-right"></i></button>
+                <button class="floor-btn">P212 <i class="fas fa-arrow-right"></i></button>
+                <button class="floor-btn">P213 <i class="fas fa-arrow-right"></i></button>
+                <button class="floor-btn">P214 <i class="fas fa-arrow-right"></i></button>
+                <button class="floor-btn">P215 <i class="fas fa-arrow-right"></i></button>
+                <button class="floor-btn">P216 <i class="fas fa-arrow-right"></i></button>
+                <button class="floor-btn">P217 <i class="fas fa-arrow-right"></i></button>
+                <button class="floor-btn">P218 <i class="fas fa-arrow-right"></i></button>
+                <button class="instructional-media-btn">Nursing Amphitheater <i class="fas fa-arrow-right"></i></button>
+                <button class="check-restrooms-btn">Check Restrooms <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <div class="floor">
+            <span>Third Floor</span>
+            <div class="floor-buttons">
+                <button class="floor-btn">P311 <i class="fas fa-arrow-right"></i></button>
+                <button class="floor-btn">P312 <i class="fas fa-arrow-right"></i></button>
+                <button class="floor-btn">P313 <i class="fas fa-arrow-right"></i></button>
+                <button class="floor-btn">P314 <i class="fas fa-arrow-right"></i></button>
+                <button class="floor-btn">P315 <i class="fas fa-arrow-right"></i></button>
+                <button class="floor-btn">P316 <i class="fas fa-arrow-right"></i></button>
+                <button class="floor-btn">P317 <i class="fas fa-arrow-right"></i></button>
+                <button class="floor-btn">P318 <i class="fas fa-arrow-right"></i></button>
+                <button class="floor-btn">P319 <i class="fas fa-arrow-right"></i></button>
+                <button class="check-restrooms-btn">Check Restrooms <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="additional-container1">
+    <h3>Feedback & Reporting System</h3>
+    <p>
+        Help us improve! Report incorrect location details, maintenance issues, or suggest improvements.
+        Please provide specific details to ensure a quick resolution.
+    </p>
+    <!---
+    <h2>✅ Data Test Success! (Delete this block later)</h2>
+    
+    <p>
+        Building Name: <b>{{ building.building_name }}</b> (DB ID: {{ building.id }})
+    </p>
+    
+    <p>
+        Current Status Key: <b>{{ status.current_status }}</b>
+    </p>
+    
+    <p>
+        Friendly Display Name: <b>{{ status.get_current_status_display }}</b>
+    </p>
+    -->
+    <div class="feedback-form">
+        <textarea id="feedback-text" placeholder="Type your feedback here..."></textarea>
+        <button class="submit-feedback-btn" onclick="submitFeedback()">Submit</button>
+    </div>
+</div>
+</div>
+    
+</div>
+  
+</div>
+        </div>
+    </div>
+    </div>    
+
+    
+<script>
+  function submitFeedback() {
+    const feedback = document.getElementById("feedback-text").value.trim();
+    
+    if (feedback === "") {
+      alert("Please enter your feedback before submitting.");
+      return;
+    }
+    alert("Thank you for your feedback!");
+    document.getElementById("feedback-text").value = "";
+  }
+</script>
+
+<script>
+        function toggleSave(icon) {
+            icon.classList.toggle('far'); 
+            icon.classList.toggle('fas');   
+            icon.classList.toggle('saved'); 
+        }
+
+function toggleSearchInput() {
+    const searchInputContainer = document.querySelector('.search-input-container');
+    
+
+    if (searchInputContainer.style.display === 'none' || searchInputContainer.style.display === '') {
+        searchInputContainer.style.display = 'block';
+    } else {
+        searchInputContainer.style.display = 'none';
+    }
+}
+
+function handleNavSearch(event) {
+    if (event.key === 'Enter') {
+        const query = event.target.value.toLowerCase().trim();
+
+        const routes = {
+            "home": "{% url 'homepage' %}",
+            "directory": "#",
+            "explore": "#",
+            "features": "#",  
+            "help": "#", 
+            "faqs": "#"  
+        };
+
+        if (routes[query]) {
+            window.location.href = routes[query];
+        } else {
+            window.location.href = `/search/?q=${encodeURIComponent(query)}`;
+        }
+    }
+}
+     </script> 
+
+<script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+      document.getElementById('overlay').classList.toggle('show');
+    }
+
+    function closeSidebar() {
+      document.getElementById('sidebar').classList.remove('open');
+      document.getElementById('overlay').classList.remove('show');
+    }
+</script>
+
+<script>
+function showThankYouPopup() {
+    const popup = document.getElementById('thankYouPopup');
+    popup.style.display = 'block';
+
+    setTimeout(() => {
+        popup.style.display = 'none';
+    }, 3000);
+}
+function submitStatus(buildingId, statusKey) {
+
+    const updateUrl = `/status/${buildingId}/update/`;
+
+    fetch(updateUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        },
+        body: new URLSearchParams({
+            status: statusKey
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        closeStatusModal();
+
+        if (data.success) {
+            showThankYouPopup();
+            window.location.reload();
+        } else {
+            alert(data.error || 'Unable to update crowd status.');
+        }
+    })
+    .catch(error => {
+        closeStatusModal();
+        console.error('Error:', error);
+        alert('Something went wrong. Please try again.');
+    });
+}
+
+
+function openStatusModal() {
+    document.getElementById("statusModal").style.display = "flex";
+}
+
+function closeStatusModal() {
+    document.getElementById("statusModal").style.display = "none";
+}
+
+
+
+</script>
+
+<script>
+document.querySelector(".info-link1").addEventListener("click", function (e) {
+  e.preventDefault();
+  document.getElementById("servicesPopup").style.display = "flex";
+});
+function openServicesPopup(event) {
+  event.preventDefault();
+  document.getElementById("servicesPopup").style.display = "flex";
+}
+
+function closeServicesPopup() {
+  document.getElementById("servicesPopup").style.display = "none";
+}
+</script>
+        
+    
+</body>
+</html>    

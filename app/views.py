@@ -96,6 +96,7 @@ def logout_view(request):
     logout(request)
     return redirect("homepage",)
 
+@login_required(login_url='/login/')
 def phelan_view(request):
     building = get_object_or_404(Building, short_name='phelan')
 
@@ -106,7 +107,8 @@ def phelan_view(request):
         'status': status_obj
     }
     return render(request, 'phelan.html', context)
-    
+
+@login_required(login_url='/login/')
 def santos_view(request):
     # 1. Fetch the Building object for Phelan Hall
     building = get_object_or_404(Building, short_name='santos')

@@ -10,63 +10,9 @@
 </head>
 <body>
     <!-- Navigation Bar -->
-  <!-- <nav class="navbar">
-    <div class="nav-left">
-      <button class="profile-button" onclick="toggleSidebar()">
-        <img src="{% static 'assets/profile.png' %}" alt="Profile" class="avatar">
-        <span class="username">maxverstappen</span>
-      </button>
-  </div>
-    <div class="nav-center">
-      <span class="logo">GoldenPath<span class="dot">.</span></span>
-    </div>
-    <div class="nav-right">
-      <a>Home</a>
-      <a>Features</a>
-      <a>Explore</a>
-      <a href="{% url 'directory' %}" class="active">Directory</a>
-      <a>Help & FAQs</a>
-      <i class="fas fa-search fa-lg search-icon" onclick="toggleSearchInput()"></i>
-        <div class="search-input-container" style="display: none;">
-            <input type="text" id="navSearch" placeholder="Search..." onkeydown="handleNavSearch(event)" />
-        </div>
-    </div>
-  </nav> -->
   {% csrf_token %}
   {% include 'navbar.html' %}
   
-<!-- Sidebar profile -->
-  <div id="sidebar" class="sidebar">
-    <div class="sidebar-header">
-      <h2 class="logo">GoldenPath.</h2>
-      <div class="profile">
-        <img src="{% static 'assets/profile.png' %}" alt="Profile" class="profile-pic">
-        <div class="profile-info">
-          <p class="name">Max Verstappen</p>
-          <p class="username">@maxverstappen</p>
-        </div>
-      </div>
-    </div>
-
-    <hr class="divider">
-    
-    <ul class="nav-links">
-      <li><a><i class="fas fa-home"></i> Home</a></li>
-      <li><a><i class="fas fa-compass"></i> Explore</a></li>
-      <li><a href="{% url 'directory' %}"><i class="fas fa-list"></i> Search & Directory</a></li>
-      <li><a><i class="fas fa-bell"></i> Notifications</a></li>
-      <li><a><i class="fas fa-bookmark"></i> Saved Buildings</a></li>
-      <li><a><i class="fas fa-flag"></i> Feedback & Reporting</a></li>
-      <li><a><i class="fas fa-cog"></i> Settings</a></li>
-    </ul>
-
-  <div class="logout">
-    <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a>
-  </div>
-  </div>
-
-  <div id="overlay" class="overlay" onclick="closeSidebar()"></div>
-
   <!-- Directory Header -->
   <div class="directory-header">
       <div class="directory-text">

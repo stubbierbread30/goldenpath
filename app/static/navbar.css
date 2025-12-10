@@ -55,7 +55,22 @@
     justify-content: flex-end;
 }
 
-.login-btn {
+.nav-right a {
+    text-decoration: none;
+    margin-left: 40px;
+    font-size: 15px;
+}
+
+.logout {
+    color:#000000 !important;
+}
+
+.nav-right a.active {
+    font-weight: 600;
+    color: #fff;
+}
+
+.login-btn, .user {
     background-color: #0c1c69; 
     color: white;
     border: none;
@@ -66,13 +81,7 @@
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.login-btn:hover {
-    background-color: #002b80;
-    transform: scale(1.05);
-}
-
-
-.login-btn:hover {
+.login-btn:hover , .user:hover {
     background-color: #002b80;
     transform: scale(1.05);
 }

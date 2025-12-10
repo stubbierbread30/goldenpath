@@ -3,6 +3,12 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import render, get_object_or_404 
+from .models import Building, CrowdStatus # Import your models!
+import json
 
 User = get_user_model()
   
@@ -89,3 +95,60 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect("homepage",)
+
+@login_required(login_url='/login/')
+def phelan_view(request):
+    building = get_object_or_404(Building, short_name='phelan')
+
+    status_obj, _ = CrowdStatus.objects.get_or_create(building=building)
+
+    context = {
+        'building': building,
+        'status': status_obj
+    }
+    return render(request, 'phelan.html', context)
+
+@login_required(login_url='/login/')
+def santos_view(request):
+    # 1. Fetch the Building object for Phelan Hall
+    building = get_object_or_404(Building, short_name='santos')
+    
+    # 2. Fetch the linked CrowdStatus object using the relationship name (lowercase model name)
+    # Django allows you to access the linked model directly using 'crowdstatus' 
+    current_status_obj = building.crowdstatus 
+    
+    context = {
+        'building': building,
+        'status': current_status_obj # Pass the status object too
+    }
+    return render(request, 'santos.html', context)
+
+@csrf_exempt
+@require_POST
+def update_crowd_status_ajax(request, building_id):
+    building = get_object_or_404(Building, pk=building_id)
+
+    try:
+        status_obj = CrowdStatus.objects.get(building=building)
+    except CrowdStatus.DoesNotExist:
+        return JsonResponse(
+            {'success': False, 'error': 'Crowd status not initialized'},
+            status=400
+        )
+
+    status_key = request.POST.get("status")
+
+    status_map = {
+        'light': 'LIGHT',
+        'moderate': 'MOD',
+        'heavy': 'HEAVY',
+    }
+
+    db_status = status_map.get(status_key)
+    if not db_status:
+        return JsonResponse({'success': False, 'error': 'Invalid status'}, status=400)
+
+    status_obj.current_status = db_status
+    status_obj.save(update_fields=['current_status'])
+
+    return JsonResponse({'success': True})

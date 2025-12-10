@@ -58,6 +58,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'goldenpath.urls'
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://goldenpath-production.up.railway.app"
+]
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -129,7 +134,7 @@ STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
-    os.path.join(BASE_DIR, 'app/static'),
+    '/app/static'
 ]
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"

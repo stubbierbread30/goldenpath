@@ -201,28 +201,6 @@
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
   <script>
-    function handleNavSearch(event) {
-      if (event.key === 'Enter') {
-        const query = event.target.value.toLowerCase().trim();
-        const routes = {
-          "home": "#",
-          "directory": "#",
-          "explore": "#",
-          "features": "#",
-          "help": "#",
-          "faqs": "#"
-        };
-
-        if (routes[query]) {
-          window.location.href = routes[query];
-        } else {
-          window.location.href = `/search/?q=${encodeURIComponent(query)}`;
-        }
-      }
-    }
-  </script>
-
-  <script>
     document.querySelector('.get-started').addEventListener('click', () => {
       document.querySelector('.info-section').scrollIntoView({
         behavior: 'smooth'

@@ -5,5 +5,5 @@ GoldenPath is a web-based navigation system for Ateneo de Naga University that h
 - Activate virtual environment:
   CMD: `./goldenpathvenv/Scripts/activate.bat`
   Powershell: `./goldenpathvenv/Scripts/activate.ps1`
-  macOS: `source ./goldenpathvenv/bin/activate`
+  Linux/Unix: `source ./goldenpathvenv/bin/activate`
 - Install dependencies: `pip install -r requirements.txt`
